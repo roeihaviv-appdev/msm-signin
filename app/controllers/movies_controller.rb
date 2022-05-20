@@ -1,4 +1,14 @@
 class MoviesController < ApplicationController
+
+  def add_user_bookmark
+    b = Bookmark.new
+    
+    b.movie_id = params.fetch("query_movie_id")
+    b.save
+
+    redirect_to "/bookmarks", :notive => "Bookmarked movie"
+  end
+
   def index
     matching_movies = Movie.all
 
